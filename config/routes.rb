@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "homes#top"
 
-  resources :users, only: [:index, :edit, :show]
+  resources :users, only: [:index, :edit, :show, :create, :update]
 
   resources :books, only:[:index, :show, :edit]
   post 'books' => 'books#create'
