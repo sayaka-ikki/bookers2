@@ -1,2 +1,19 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<div class="row">
+  <%= render partial: "shared/userinfo" %>
+
+  <div class="col-md-8 offset-md-1">
+    <h2>Book detail</h2>
+    <table>
+      <% @books.each do |book| %>
+      <% @users.each do |user| %>
+      <tr>
+          <td><%= link_to image_tag(user.profile_image, size: "80x80"), user_path(user) %><br>
+              <%= link_to user.name, user_path(user)%></td>
+          <td><%= link_to book.title, book_path(book)%></td>
+          <td><%= book.opinion %></td>
+      </tr>
+      <% end %>
+      <% end %>
+    </table>
+  </div>
+</div>

@@ -3,14 +3,22 @@
 
   <div class="col-md-8 offset-md-1">
     <h2>Books</h2>
-    <% @books.each do |book| %>
     <table>
       <tr>
-        <td>Title</td>
-        <td>Opinion</td>
-        <th><%= book.title %></th>
+        <th></th>
+        <th>Title</th>
+        <th>Opinion</th>
       </tr>
+      <% @books.each do |book| %>
+      <% @users.each do |user| %>
+
+        <tr>
+          <td><%= link_to image_tag(user.profile_image, size: "80x80"), user_path(user) %></td>
+          <td><%= link_to book.title, book_path(book)%></td>
+          <td><%= book.opinion %></td>
+        </tr>
+      <% end %>
+      <% end %>
     </table>
-    <% end %>
   </div>
 </div>
