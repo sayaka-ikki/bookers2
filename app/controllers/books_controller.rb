@@ -24,11 +24,19 @@ class BooksController < ApplicationController
     @users = User.all
     @book = Book.new
     @book_id = Book.find(params[:id])
+    @user = @book.user
     @books = Book.all
   end
 
   def edit
   end
+
+  def destroy
+    book_id = Book.find(params[:id])
+    book_id.destroy
+    redirect_to 'books'
+  end
+
 end
 
 private

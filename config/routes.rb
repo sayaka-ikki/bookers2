@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :edit, :show, :create, :update]
 
-  resources :books, only:[:index, :show, :edit]
+  resources :books, only:[:index, :show, :edit, :destroy]
   post 'books' => 'books#create'
 
   get 'homes/about' => 'homes#about', as: 'about'

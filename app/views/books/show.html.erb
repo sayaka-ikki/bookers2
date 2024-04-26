@@ -4,16 +4,29 @@
   <div class="col-md-8 offset-md-1">
     <h2>Book detail</h2>
     <table>
-      <% @books.each do |book| %>
-      <% @users.each do |user| %>
       <tr>
-          <td><%= link_to image_tag(user.profile_image, size: "80x80"), user_path(user) %><br>
-              <%= link_to user.name, user_path(user)%></td>
-          <td><%= link_to book.title, book_path(book)%></td>
-          <td><%= book.opinion %></td>
+        <td>
+          <%= link_to user_path(@book_id.user) do %>
+            <%= image_tag(@book_id.user.profile_image, size: "80x80") %>
+          <% end %><br>
+          <%= link_to user_path(@book_id.user) do %>
+            <%= @book_id.user.name %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to book_path(@book_id) do %>
+            <%= @book_id.title %>
+          <% end %>
+        </td>
+        <td>
+          <%= @book_id.opinion %>
+        </td>
+        <td>
+          <% if @book_id.user == current_user %>
+            <%= button_to "Destroy", books_path(@book_id), method: :DELETE %>
+          <% end %>
+        </td>
       </tr>
-      <% end %>
-      <% end %>
     </table>
   </div>
 </div>
