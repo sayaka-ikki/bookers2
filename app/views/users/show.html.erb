@@ -1,5 +1,21 @@
 <div class="row">
-  <%= render partial: "shared/userinfo" %>
+  <div class="col-md-3">
+    <h2>User info</h2>
+    <%= image_tag @user.get_profile_image(100,100) %>
+    <table>
+      <tr>
+        <th>name</th><td><%= @user.name %></td>
+      </tr>
+      <tr>
+        <th>introduction</th><td><%= @user.introduction %></td>
+      </tr>
+    </table>
+    <%= button_to user_path(current_user), method: :get do %>
+      <i class="fa-solid fa-user-gear"></i>
+    <% end %>
+
+    <%= render partial: "shared/newbook" %>
+  </div>
 
   <div class="col-md-8 offset-md-1">
     <h2>Books</h2>
@@ -8,13 +24,11 @@
         <th></th><th>Title</th><th>Opinion</th>
       </tr>
       <% @books.each do |book| %>
-      <% @users.each do |user| %>
       <tr>
-          <td><%= link_to image_tag(user.profile_image, size: "80x80"), user_path(user) %></td>
+          <td><%= link_to image_tag(@user.get_profile_image(80,80)), user_path(@user) %></td>
           <td><%= link_to book.title, book_path(book)%></td>
           <td><%= book.opinion %></td>
       </tr>
-      <% end %>
       <% end %>
     </table>
   </div>

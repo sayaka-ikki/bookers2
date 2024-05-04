@@ -1,32 +1,43 @@
-<div class="row">
-  <%= render partial: "shared/userinfo" %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+    <%= render partial: "shared/userinfo" %>
+    <%= render partial: "shared/newbook" %>
+    </div>
 
-  <div class="col-md-8 offset-md-1">
-    <h2>Book detail</h2>
-    <table>
-      <tr>
-        <td>
-          <%= link_to user_path(@book_id.user) do %>
-            <%= image_tag(@book_id.user.profile_image, size: "80x80") %>
-          <% end %><br>
-          <%= link_to user_path(@book_id.user) do %>
-            <%= @book_id.user.name %>
-          <% end %>
-        </td>
-        <td>
-          <%= link_to book_path(@book_id) do %>
-            <%= @book_id.title %>
-          <% end %>
-        </td>
-        <td>
-          <%= @book_id.opinion %>
-        </td>
-        <td>
-          <% if @book_id.user == current_user %>
-            <%= button_to "Destroy", books_path(@book_id), method: :DELETE %>
-          <% end %>
-        </td>
-      </tr>
-    </table>
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+      <table>
+        <tr>
+          <td>
+            <%= link_to user_path(@book_id.user) do %>
+              <%= image_tag(@book_id.user.get_profile_image(80,80)) %>
+            <% end %><br>
+            <%= link_to user_path(@book_id.user) do %>
+              <%= @book_id.user.name %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to book_path(@book_id) do %>
+              <%= @book_id.title %>
+            <% end %>
+          </td>
+          <td>
+            <%= @book_id.opinion %>
+          </td>
+          <td>
+            <% if @book_id.user == current_user %>
+              <%= button_to "Edit", edit_book_path(@book_id), method: :get %>
+            <% end %>
+          </td>
+
+          <td>
+            <% if @book_id.user == current_user %>
+              <%= button_to "Destroy", book_path(@book_id), method: :delete %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
 </div>

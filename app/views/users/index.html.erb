@@ -1,13 +1,26 @@
 <div class="row">
-  <%= render partial: "shared/userinfo" %>
+  <div class="col-md-3">
+    <%= render partial: "shared/userinfo" %>
+    <%= render partial: "shared/newbook" %>
+  </div>
 
   <div class="col-md-8 offset-md-1">
     <h2>Users</h2>
-    <% @users.each do |user| %>
-    <tr>
-      <th><%= user.name %></th>
-    </tr>
-    <% end %>
+
+    <table>
+      <tr>
+        <th>image</th>
+        <th>name</th>
+        <th></th>
+      </tr>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= image_tag user.get_profile_image(100,100) %></td>
+        <td><%= user.name %></td>
+        <td><%= link_to 'show',user_path(user) %></td>
+      </tr>
+      <% end %>
+    </table>
   </div>
 
 </div>
