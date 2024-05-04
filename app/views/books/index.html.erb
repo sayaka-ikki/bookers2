@@ -1,3 +1,6 @@
+<div>
+  <%= render partial: "shared/validation_errors" %>
+</div>
 <div class="row">
   <div class="col-md-3">
     <%= render partial: "shared/userinfo" %>
@@ -19,23 +22,6 @@
           <td><%= book.opinion %></td>
         </tr>
       <% end %>
-
-<%
-=begin
-%>
-      <% @books.each do |book| %>
-      <% @users.each do |user| %>
-
-        <tr>
-          <td><%= link_to image_tag(user.get_profile_image(80,80)), user_path(user) %></td>
-          <td><%= link_to book.title, book_path(book)%></td>
-          <td><%= book.opinion %></td>
-        </tr>
-      <% end %>
-      <% end %>
-<%
-=end
-%>
     </table>
   </div>
 </div>
