@@ -1,10 +1,10 @@
 <div>
-  <%= render partial: "shared/validation_errors" %>
+  <%= render 'shared/validation_errors', book: @book %>
 </div>
 <div class="row">
   <div class="col-md-3">
-    <%= render partial: "shared/userinfo" %>
-    <%= render partial: "shared/newbook" %>
+    <%= render 'shared/userinfo',current_user: @current_user %>
+    <%= render 'shared/newbook',book: @book %>
   </div>
 
   <div class="col-md-8 offset-md-1">
@@ -19,7 +19,7 @@
         <tr>
           <td><%= link_to image_tag(book.user.get_profile_image(80,80)), user_path(book.user) %></td>
           <td><%= link_to book.title, book_path(book)%></td>
-          <td><%= book.opinion %></td>
+          <td><%= book.body %></td>
         </tr>
       <% end %>
     </table>
