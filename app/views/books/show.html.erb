@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-    <%= render partial: "shared/userinfo" %>
+    <%= render 'shared/userinfo',book: @book %>
     <%= render 'shared/newbook',book: @book %>
     </div>
 
@@ -27,13 +27,13 @@
           </td>
           <td>
             <% if @book_id.user == current_user %>
-              <%= button_to "Edit", edit_book_path(@book_id), method: :get %>
+              <%= link_to "Edit", edit_book_path(@book_id), class:"btn btn-success btn-sm btn-block" %>
             <% end %>
           </td>
 
           <td>
             <% if @book_id.user == current_user %>
-              <%= button_to "Destroy", book_path(@book_id), method: :delete %>
+              <%= link_to "Destroy", book_path(@book_id), class:"btn btn-danger btn-sm btn-block",method: :delete %>
             <% end %>
           </td>
         </tr>

@@ -3,7 +3,6 @@ class BooksController < ApplicationController
     @book = Book.new
     @books = Book.all
     @book.user_id = current_user.id
-    @user = User.new
   end
 
 
