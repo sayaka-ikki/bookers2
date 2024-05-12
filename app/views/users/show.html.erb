@@ -1,42 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'shared/userinfo',user: @user %>
+      <%= render 'shared/newbook',book: @book %>
+    </div>
 
-<div class="row">
-  <div class="col-md-3">
-    <h2>User info</h2>
-    <%= image_tag @user.get_profile_image(100,100) %>
-    <table>
-      <tr>
-        <th>name</th><td><%= @user.name %></td>
-      </tr>
-      <tr>
-        <th>introduction</th><td><%= @user.introduction %></td>
-      </tr>
-    </table>
-    <% if @user == current_user %>
-      <%= link_to edit_user_path(current_user) do %>
-      <i class="fa-solid fa-user-gear"></i>
-      <% end %>
-    <% else %>
-      <%= link_to user_path(current_user) do %>
-        <i class="fa-solid fa-user-gear"></i>
-      <% end %>
-    <% end %>
-
-    <%= render 'shared/newbook',book: @book %>
-  </div>
-
-  <div class="col-md-8 offset-md-1">
-    <h2>Books</h2>
-    <table>
-      <tr>
-        <th></th><th>Title</th><th>Opinion</th>
-      </tr>
-      <% @books.each do |book| %>
-      <tr>
+    <div class="col-md-8 offset-md-1">
+      <h2>Books</h2>
+      <table>
+        <tr>
+          <th></th><th>Title</th><th>Opinion</th>
+        </tr>
+        <% @books.each do |book| %>
+        <tr>
           <td><%= link_to image_tag(@user.get_profile_image(80,80)), user_path(@user) %></td>
           <td><%= link_to book.title, book_path(book)%></td>
           <td><%= book.body %></td>
-      </tr>
-      <% end %>
-    </table>
+        </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
 </div>

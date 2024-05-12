@@ -1,30 +1,33 @@
-<div class="row">
-  <div class="col-md-3">
-    <%= render 'shared/userinfo',current_user: @current_user %>
-    <%= render 'shared/newbook',book: @book %>
+<div class="container">
+  <div>
+    <%= render 'shared/validation_errors', book: @book %>
   </div>
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'shared/userinfo',user: @user %>
+      <%= render 'shared/newbook',book: @book %>
+    </div>
 
-  <div class="col-md-8 offset-md-1">
-    <h2>Users</h2>
+    <div class="col-md-8 offset-md-1">
+      <h2>Users</h2>
 
-    <table>
-      <tr>
-        <th>image</th>
-        <th>name</th>
-        <th></th>
-      </tr>
-      <% @users.each do |user| %>
-      <tr>
-        <td><%= image_tag user.get_profile_image(100,100) %></td>
-        <td><%= user.name %></td>
-        <td><%= link_to 'show',user_path(user) %></td>
-      </tr>
-      <% end %>
-    </table>
+      <table>
+        <tr>
+          <th>image</th>
+          <th>name</th>
+          <th></th>
+        </tr>
+        <% @users.each do |user| %>
+        <tr>
+          <td><%= image_tag user.get_profile_image(100,100) %></td>
+          <td><%= user.name %></td>
+          <td><%= link_to 'Show',user_path(user) %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
-
 </div>
-
 
 
 
